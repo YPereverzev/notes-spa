@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import NotesTitle from './components/notestitle';
+import {fixture} from './fixture';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <NotesTitle />
+      {fixture.map(item => (
+        <div>
+          <p>
+            {item.title}
+          </p>
+          <p>
+            {item.text}
+          </p>
+
+        </div>
+      ))}
     </div>
   );
 }
