@@ -1,22 +1,24 @@
-export const notesSelector = (state) => state.allExporters.entities;
-export const notesLoadingSelector = (state) => state.allExporters.loading;
-export const notesLoadedSelector = (state) => state.allExporters.loaded;
-export const notesLoadingErrorSelector = (state) => state.allExporters.error;
+import { createSelector } from 'reselect';
 
-export const entrySelector = (state, noteId) => state.allExporters.entities;
+export const notesSelector = (state) => state.notes.entities;
+export const notesLoadingSelector = (state) => state.notes.loading;
+export const notesLoadedSelector = (state) => state.notes.loaded;
+export const notesLoadingErrorSelector = (state) => state.notes.error;
 
-export const allNotesSelector = (state) => state?.allExporters?.entities || null
+
+export const allNotesSelector = (state) => state?.notes?.entities || null
+
+const idSelector = (_, ownProps) => {
+    return ownProps.activeNote.id;
+};
+  
 
 export const entrySelector = createSelector(
     notesSelector,
-    noteId,
+    idSelector,
     (entities, id) => {
       const buff = entities.find((note) => note.id === id);
       return buff;
     },
   );
 
-  const idSelector = (_, ownProps) => {
-    return ownProps.activeNote.id;
-  };
-  

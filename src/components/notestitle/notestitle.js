@@ -1,19 +1,30 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import {
-    notesSelector
-} from '/../redux/reducer/selectors';
+    notesSelector,
+    notesLoadedSelector,
+    notesLoadingSelector,
+} from '../redux/reducer/selectors';
+import { loadNotes } from '../redux/actions';
   
 import Loader from '../loader';
 import styles from './notestitle.module.css';
 
-const NotesTitle = () => {
+const NotesTitle = ({ loaded, loading, loadNotes, notes}) => {
+    debugger;
+    useEffect(() => {
+        if (!loaded) loadNotes();
+      }, []); //eslint-disable-line
+    
+      if (loading || !loaded) return <Loader />;
+
     return (
-        <div>
-            <div className={styles.notes_names}>
-                <p>1Как быстро обновдять MacOS</p>
-            </div>
-        </div>
+            notes.map(note => (
+                <div className={styles.notes_names} key={note.title}>
+                    <p>{note.title}</p>
+                </div>
+
+            ))
     );
 
 }
@@ -21,6 +32,8 @@ const NotesTitle = () => {
 const mapStateToProps = (state, ownProps) => {
     return {
         notes: notesSelector(state, ownProps),
+        loaded: notesLoadedSelector(state),
+        loading: notesLoadingSelector (state),
     };
   };
   

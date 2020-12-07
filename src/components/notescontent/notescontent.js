@@ -6,8 +6,9 @@ import Loader from '../loader';
 import styles from './notestitle.module.css';
 
 
-const NotesContent = ({noteId, entry}) => {
-    // , 
+
+const NotesContent = ({noteId, entry, loaded}) => {
+    debugger;
     return (
         <div className={styles.note_area}>
             <div className={styles.notes_title}>
@@ -30,6 +31,7 @@ export default notescontent;
 const mapStateToProps = (state, ownProps) => {
     return {
         notes: entrySelector(state, ownProps.noteId),
+        
     };
   };
   
