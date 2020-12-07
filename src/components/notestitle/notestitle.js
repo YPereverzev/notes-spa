@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-    notes
-} from '../../redux/reducer/selectors';
+    notesSelector
+} from '/../redux/reducer/selectors';
   
 import Loader from '../loader';
 import styles from './notestitle.module.css';
