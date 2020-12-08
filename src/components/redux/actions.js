@@ -4,10 +4,10 @@ import {
     REQUEST,
     LOAD_NOTES,
     notesAPI,
+    SET_NEW_NOTE,
  } from '../redux/constants';
 
 export const loadNotes = (state) => async (dispatch) => {
-    console.log('thunk');
     dispatch({type: LOAD_NOTES + REQUEST})
 
   try {
@@ -20,9 +20,12 @@ export const loadNotes = (state) => async (dispatch) => {
   }
 };
 
-export const chousenNote = () => {
+export const setNewNote = (activeNoteId, newNoteInfo) => {
     return {
-        type: 'chousen_note',
-        payload: notesAPI, 
+        type: SET_NEW_NOTE,
+        payload: {
+          activeNoteId: activeNoteId, 
+          newNoteInfo: newNoteInfo
+        }
     }
 }

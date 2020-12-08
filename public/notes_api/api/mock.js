@@ -1,19 +1,22 @@
 const allNotes = [
   {
-    title: "1Как быстро обновдять MacOS",
-    text: "Lorem1"
+    id: '01',
+    title: '11Как быстро обновлять MacOS',
+    text: 'Lorem1'
   },
   {
-      title: "2Как быстро обновдять MacOS",
-      text: "Lorem3"
+    id: '02',
+    title: '22Как быстро обновлять MacOS',
+    text: 'Lorem2'
   },
   {
-      title: "3Как быстро обновдять MacOS",
-      text: "Lorem3"
+    id: '03',
+    title: '33Как быстро обновлять MacOS',
+    text: 'Lorem3'
   },
 ];
 
 
 module.exports = {
-  notes: allNotes,
+  allNotes: allNotes,
 };

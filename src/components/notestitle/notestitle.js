@@ -8,23 +8,32 @@ import {
 import { loadNotes } from '../redux/actions';
   
 import Loader from '../loader';
-import styles from './notestitle.module.css';
+import NoteTitleRow from './notetitlerow';
 
-const NotesTitle = ({ loaded, loading, loadNotes, notes}) => {
-    debugger;
+
+
+
+const NotesTitle = ({ loaded, loading, loadNotes, notes, setActiveNote, activeNote, setEditflag}) => {
     useEffect(() => {
-        if (!loaded) loadNotes();
+        if (!loaded) {
+          loadNotes();
+          initNotesTitle(setActiveNote);
+        }
+        setActiveNote('01');
       }, []); //eslint-disable-line
     
       if (loading || !loaded) return <Loader />;
-
+      
     return (
-            notes.map(note => (
-                <div className={styles.notes_names} key={note.title}>
-                    <p>{note.title}</p>
-                </div>
-
-            ))
+            notes.map(note => {
+              let activestyle = false;
+              if (activeNote === note.id ) {
+                activestyle = true
+              }
+              return (
+                <NoteTitleRow activestyle={activestyle} note={note} setEditflag={setEditflag}/>
+              )
+            })
     );
 
 }
@@ -38,10 +47,19 @@ const mapStateToProps = (state, ownProps) => {
   };
   
 const mapDispatchToProps = (dispatch) => {
-    // debugger
     return {
       loadNotes: () => dispatch(loadNotes()),
     };
   };
   
   export default connect(mapStateToProps, mapDispatchToProps)(NotesTitle);
+
+
+function initNotesTitle (setActiveNote) {
+  const elNotesTitle = document.getElementById('NotesTitle');
+  elNotesTitle.addEventListener('click', (event) => { 
+    setActiveNote(event.target.closest('.NoteTitleRow').id);
+  })
+  
+
+  }

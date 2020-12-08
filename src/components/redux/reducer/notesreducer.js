@@ -1,15 +1,15 @@
 // import produce from 'immer';
-import { LOAD_NOTES, SUCCESS, REQUEST, FAILURE } from '../constants';
+import { LOAD_NOTES, SUCCESS, REQUEST, FAILURE, SET_NEW_NOTE } from '../constants';
 
 const initialState = {
   loading: false,
   error: null,
   loaded: false,
-  entities: {},
+  entities: [],
 };
 
 export default (state = initialState, action) => {
-  const { type, notesResponse, error } = action;
+  const { type, notesResponse, error, payload } = action;
   switch (type) {
     case LOAD_NOTES + REQUEST:
       return {
@@ -35,6 +35,18 @@ export default (state = initialState, action) => {
         error: null,
         entities: [...notesResponse],
       };
+
+      case SET_NEW_NOTE: {
+        const activeNoteIdIndex = state.entities.findIndex(item => item.id === payload.activeNoteId);
+        state.entities[activeNoteIdIndex] = payload.newNoteInfo
+        return {
+          ...state,
+          loading: false,
+          loaded: true,
+          error: null,
+          entities: [...state.entities],
+        };
+      }
 
     default:
       return state;

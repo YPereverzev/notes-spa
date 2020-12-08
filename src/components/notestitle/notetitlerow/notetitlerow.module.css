@@ -1,0 +1,16 @@
+.notes_names {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.notes_names:hover {
+    /* opacity: 0.6; */
+    background-color: #333;
+}
+
+
+.menuButton_wrapper {
+    color: red;
+    position: relative;
+}

@@ -1,20 +1,34 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
     entrySelector,
-} from '../../redux/reducer/selectors';
+    idSelector,
+    tmpIdSelector,
+    notesLoadedSelector,
+    notesLoadingSelector,
+} from '../redux/reducer/selectors';
 import Loader from '../loader';
 import styles from './notestitle.module.css';
 
 
 
-const NotesContent = ({noteId, entry, loaded}) => {
-    debugger;
+const NotesContent = ({ loaded, loading, activeNoteId, noteId, entry }) => {
+    if (loading || !loaded) return <Loader />;
+    
+    if (activeNoteId === null) {
+        return (
+            <div>
+                нет записей
+            </div>
+        )
+    }
+    // debugger;
     return (
         <div className={styles.note_area}>
             <div className={styles.notes_title}>
-                <p>
+                <span>
                     {entry.title}
-                </p>
+                </span>
             </div>
     
             <div>
@@ -26,12 +40,11 @@ const NotesContent = ({noteId, entry, loaded}) => {
     );
 };
 
-export default notescontent;
-
 const mapStateToProps = (state, ownProps) => {
     return {
-        notes: entrySelector(state, ownProps.noteId),
-        
+        entry: tmpIdSelector(state, ownProps.activeNoteId),
+        loaded: notesLoadedSelector(state),
+        loading: notesLoadingSelector (state),
     };
   };
   
