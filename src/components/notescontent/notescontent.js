@@ -22,7 +22,7 @@ const NotesContent = ({ loaded, loading, activeNoteId, noteId, entry }) => {
             </div>
         )
     }
-    // debugger;
+
     return (
         <div className={styles.note_area}>
             <div className={styles.notes_title}>

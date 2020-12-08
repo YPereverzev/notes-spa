@@ -26,10 +26,10 @@ function App() {
 
       </div>
     </aside>
-    <main>
+    <main className={globalStyles.main}>
         <div>
           {
-            editflag ? <NotesContent activeNoteId={activeNote}/> : <NotesContentEdit activeNoteId={activeNote} setEditflag={setEditflag}/>
+            editflag ? <NotesContent activeNoteId={activeNote} setEditflag={setEditflag}/> : <NotesContentEdit activeNoteId={activeNote} setEditflag={setEditflag}/>
           }
            
 

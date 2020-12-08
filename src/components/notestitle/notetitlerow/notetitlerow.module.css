@@ -5,12 +5,21 @@
 }
 
 .notes_names:hover {
-    /* opacity: 0.6; */
     background-color: #333;
 }
 
 
 .menuButton_wrapper {
-    color: red;
     position: relative;
 }
+
+.active {
+    background-color: #f7d66d;
+    color: #333;
+  }
+  
+  .active:hover {
+    background-color: #fad24e;
+    color: #333;
+  }
+  

@@ -22,29 +22,24 @@ const NotesContentEdit = ({ activeNoteId, setEditflag, entry, setNewNote }) => {
     const formEl = useRef(null);
     return (
         <div className={styles.note_area}>
-            <div className={styles.notes_title}>
-                <span>
-                    РЕДАКТИРОВАНИЕ ШАПКИ
-                    {entry.title}
-                </span>
-            </div>
-    
-            <div>
-                <p> 
-                    РЕДАКТИРОВАНИЕ ТЕКСТА
-                    {entry.text}
-                </p>
-            </div>
 
-            <form ref={formEl} onSubmit={(event) => handleSubmit(event, setNewNote, activeNoteId)} id='form'>
+            <form ref={formEl} onSubmit={(event) => handleSubmit(event, setNewNote, activeNoteId, setEditflag)} id='form'>
                 <label>
-                Title:
-                <input type="text" value={titleValue} onChange={() => handleTitleChange(setTitleValue)} id='newTitleValue' />
-
-                Text:
-                <input type="text" value={textValue} onChange={() => handleTextChange(setTextValue)} id='newTextValue' />
+                    <p>
+                        Название заметки:
+                    </p> 
+                    <input className={styles.newTitleValue} type="text" value={titleValue} onChange={() => handleTitleChange(setTitleValue)} id='newTitleValue' />
                 </label>
-                <input type="submit" value="Отправить" />
+                <label>
+                    <p>
+                        Заметка:
+                    </p> 
+                    <textarea className={styles.newTextValue} type="text" value={textValue} onChange={() => handleTextChange(setTextValue)} id='newTextValue' />
+                </label>
+                <br></br>
+                <div className={styles.applyBtn_wrapper}>
+                    <input className={styles.applyBtn} type="submit" value="Сохранить" />
+                </div>
             </form>
         </div>
     );
@@ -77,12 +72,14 @@ const handleTextChange = (setTextValue) => {
 }
 
 
-const handleSubmit = (event, setNewNote, activeNoteId) => {
+const handleSubmit = (event, setNewNote, activeNoteId, setEditflag) => {
     event.preventDefault();
     const newNoteInfo = {
         id: activeNoteId,
         title: event.currentTarget[0].defaultValue,
         text: event.currentTarget[1].defaultValue,
     }
+
+    setEditflag(true);
     setNewNote(activeNoteId, newNoteInfo);
 }

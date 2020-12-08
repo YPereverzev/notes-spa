@@ -47,7 +47,6 @@ const initMenuButton = () => {
     const ROOT = document.getElementById('root');
     ROOT.addEventListener('click', (event) => {
         if (!event.target.closest('#MenuButton') ) {
-            debugger;
             MenuButton.classList.remove('displayNone');
             menuButtonList_wrapper.classList.add('displayNone');
         }

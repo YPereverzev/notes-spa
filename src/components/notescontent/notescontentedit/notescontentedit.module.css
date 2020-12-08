@@ -1,3 +1,53 @@
-.test {
-    color: red;
+.note_area {
+    color: #333;
+    margin: 40px;
+    display: block;
 }
+
+
+.newTitleValue,
+.newTextValue {
+    outline: none;
+    border: none;
+    background-color: rgb(247, 247, 247);
+    width: 100%;
+    display: block;
+    padding: 0;
+    padding: 20px;
+}
+
+
+.newTextValue {
+    min-height: 100px;
+    resize: none;
+}
+
+.applyBtn_wrapper {
+    position: relative;
+}
+
+.applyBtn {
+    background-color: #f7d66d;
+    outline: none;
+    height: 27px;
+    width: 110px;
+    border-radius: 4px;
+    border: none;
+    margin: 0 auto;
+    margin-right: 0px;
+    position: absolute;
+    right: 0px;
+}
+
+.applyBtn:hover {
+    background-color: #f8cb37;
+    outline: none;
+}
+
+.applyBtn:active {
+    border: 1px solid gray;
+    background-color: #f8cb37;
+    outline: none;
+
+}
+
