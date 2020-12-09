@@ -1,32 +1,38 @@
 import React, { useState, useRef } from 'react';
-import styles from './notescontentedit.module.css';
+import styles from './addnotescontent.module.css';
 import { connect } from 'react-redux';
-import { setNewNote } from '../../redux/actions'
-import { SHOW_NOTE } from '../../redux/constants'
+import { saveNewNote } from '../../redux/actions'
+import { SHOW_NOTE,
+    SAVE_NEW_NOTE,
+} from '../../redux/constants';
+import { v4 as uuidv4 } from 'uuid';
 
 import {
-    entrySelector,
-    idSelector,
     tmpIdSelector,
     notesLoadedSelector,
     notesLoadingSelector,
 } from '../../redux/reducer/selectors';
+import Loader from '../../loader';
 
 
 
 
-const NotesContentEdit = ({ activeNoteId, setEditflag, entry, setNewNote }) => {
-    const [titleValue, setTitleValue] = useState(entry.title);
-    const [textValue, setTextValue] = useState(entry.text);
-
+const AddNotesContent = ({ activeNoteId, setEditflag, loading, loaded, saveNewNote }) => {
+    const [titleValue, setTitleValue] = useState('');
+    const [textValue, setTextValue] = useState('');
     const formEl = useRef(null);
+    
+    if (loading || !loaded) return <Loader />;
+    
     return (
         <div className={styles.note_area}>
 
-            <form ref={formEl} onSubmit={(event) => handleSubmit(event, setNewNote, activeNoteId, setEditflag)} id='form'>
+            <form ref={formEl} onSubmit={(event) => {
+                handleSubmit({event, saveNewNote, activeNoteId, setEditflag})
+            }} id='form'>
                 <label>
                     <p>
-                        Название заметки:
+                        Название новой заметки:
                     </p> 
                     <input className={styles.newTitleValue} type="text" value={titleValue} onChange={() => handleTitleChange(setTitleValue)} id='newTitleValue' />
                 </label>
@@ -45,9 +51,8 @@ const NotesContentEdit = ({ activeNoteId, setEditflag, entry, setNewNote }) => {
     );
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
-        entry: tmpIdSelector(state, ownProps.activeNoteId),
         loaded: notesLoadedSelector(state),
         loading: notesLoadingSelector (state),
     };
@@ -55,11 +60,11 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setNewNote: (activeNoteId, newNoteInfo) => dispatch(setNewNote(activeNoteId, newNoteInfo))
+        saveNewNote: (newNoteInfo) => dispatch(saveNewNote(newNoteInfo))
     }
 }
   
-export default connect(mapStateToProps, mapDispatchToProps)(NotesContentEdit);
+export default connect(mapStateToProps, mapDispatchToProps)(AddNotesContent);
 
 const handleTitleChange = (setTitleValue) => {
     const newTitleValue = document.getElementById('newTitleValue');
@@ -71,14 +76,16 @@ const handleTextChange = (setTextValue) => {
     setTextValue(newTextValue.value);
 }
 
-const handleSubmit = (event, setNewNote, activeNoteId, setEditflag) => {
+const handleSubmit = ({event, saveNewNote, activeNoteId, setEditflag}) => {
     event.preventDefault();
     const newNoteInfo = {
-        id: activeNoteId,
+        id: uuidv4(),
         title: event.currentTarget[0].defaultValue,
         text: event.currentTarget[1].defaultValue,
     }
+    debugger;
 
     setEditflag(SHOW_NOTE);
-    setNewNote(activeNoteId, newNoteInfo);
+    saveNewNote(newNoteInfo);
+    // setNewNote(activeNoteId, newNoteInfo);
 }

@@ -7,7 +7,7 @@ const NoteTitleRow = ({ note, activestyle, setEditflag}) => {
     
     return (
         <div 
-            className={`${styles.notes_names} ${activestyle && sty.active} NoteTitleRow` } 
+            className={`${styles.notes_names} ${activestyle && styles.active} NoteTitleRow` } 
             key={note.id}
             id={note.id}
         >

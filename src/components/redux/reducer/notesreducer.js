@@ -1,11 +1,20 @@
 // import produce from 'immer';
-import { LOAD_NOTES, SUCCESS, REQUEST, FAILURE, SET_NEW_NOTE } from '../constants';
+import { 
+  LOAD_NOTES,
+  SUCCESS,
+  REQUEST, 
+  FAILURE, 
+  SET_NEW_NOTE,
+  SAVE_NEW_NOTE,
+  DELETE_NOTE,
+} from '../constants';
 
 const initialState = {
   loading: false,
   error: null,
   loaded: false,
   entities: [],
+  trashed: [],
 };
 
 export default (state = initialState, action) => {
@@ -45,6 +54,29 @@ export default (state = initialState, action) => {
           loaded: true,
           error: null,
           entities: [...state.entities],
+        };
+      }
+
+      case SAVE_NEW_NOTE: 
+        return {
+          ...state,
+          loading: false,
+          loaded: true,
+          error: null,
+          entities: [...state.entities, payload.newNoteInfo],
+        };
+      
+      case DELETE_NOTE: {
+        const activeNoteIdIndex = state.entities.findIndex(item => item.id === payload.id);
+        const newState = [...state.entities];
+        const deltedNote = newState.splice(activeNoteIdIndex, 1);
+        return {
+          ...state,
+          loading: false,
+          loaded: true,
+          error: null,
+          entities: [...newState],
+          trashed: [...state.trashed, ...deltedNote]
         };
       }
 

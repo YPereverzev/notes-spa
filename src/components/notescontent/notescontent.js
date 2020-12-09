@@ -6,22 +6,34 @@ import {
     tmpIdSelector,
     notesLoadedSelector,
     notesLoadingSelector,
+    loadFirstNoteSelector,
 } from '../redux/reducer/selectors';
 import Loader from '../loader';
 import styles from './notestitle.module.css';
 
 
 
-const NotesContent = ({ loaded, loading, activeNoteId, noteId, entry }) => {
+const NotesContent = ({ loaded, loading, activeNoteId, entry, loadFirstNoteSelector, setActiveNote, tmpIdSelector }) => {
     if (loading || !loaded) return <Loader />;
     
-    if (activeNoteId === null) {
+    debugger;
+    if (!tmpIdSelector) {
+        setActiveNote(loadFirstNoteSelector);
         return (
-            <div>
-                нет записей
+            <div className={styles.note_area}>
+                <div className={styles.notes_title}>
+                    Записей нет
+                </div>
             </div>
-        )
-    }
+    )}
+
+    // if (!activeNoteId) {
+    //     return (
+    //         <div>
+    //             нет записей
+    //         </div>
+    //     )
+    // }
 
     return (
         <div className={styles.note_area}>
@@ -41,10 +53,13 @@ const NotesContent = ({ loaded, loading, activeNoteId, noteId, entry }) => {
 };
 
 const mapStateToProps = (state, ownProps) => {
+
     return {
         entry: tmpIdSelector(state, ownProps.activeNoteId),
         loaded: notesLoadedSelector(state),
         loading: notesLoadingSelector (state),
+        loadFirstNoteSelector: loadFirstNoteSelector(state),
+        tmpIdSelector: tmpIdSelector(state, ownProps.activeNoteId),
     };
   };
   

@@ -5,6 +5,8 @@ import {
     LOAD_NOTES,
     notesAPI,
     SET_NEW_NOTE,
+    SAVE_NEW_NOTE,
+    DELETE_NOTE,
  } from '../redux/constants';
 
 export const loadNotes = (state) => async (dispatch) => {
@@ -29,3 +31,24 @@ export const setNewNote = (activeNoteId, newNoteInfo) => {
         }
     }
 }
+
+
+export const saveNewNote = (newNoteInfo) => {
+  return {
+      type: SAVE_NEW_NOTE,
+      payload: {
+        newNoteInfo: newNoteInfo
+      }
+  }
+}
+
+export const deleteNote = (id) => {
+  return {
+      type: DELETE_NOTE,
+      payload: {
+        id: id
+      }
+  }
+}
+
+

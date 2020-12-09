@@ -1,12 +1,24 @@
 import React, { useEffect } from 'react';
 import styles from './menubutton.module.css';
+import { connect } from 'react-redux';
+import {
+    EDIT_NOTE,
+    ADD_NOTE,
+    SHOW_NOTE,
+} from '../../redux/constants';
+import { deleteNote } from '../../redux/actions';
+import {
+    notesLoadedSelector,
+} from '../../redux/reducer/selectors';
 
-const MenuButton = ({ id, setEditflag }) => {
+
+
+const MenuButton = ({ id, setEditflag, deleteNote, loaded }) => {
     useEffect(() => {
         initMenuButton();
     }, []); //eslint-disable-line
     return (
-        <div >
+        <>
             <button id='MenuButton' 
             className={`${styles.menuButton} 
             `}> 
@@ -18,23 +30,39 @@ const MenuButton = ({ id, setEditflag }) => {
                 ${'displayNone'}
             `}>
                 <button className={`${styles.menuButtonList_item} ${styles.edit} influencebutton`}
-                    onClick={() => editNoteContent(id, setEditflag)}
+                    onClick={() => editNoteContentHandler(id, setEditflag)}
                 >
                     редактировать
                 </button>   
-                <button className={`${styles.menuButtonList_item} ${styles.add} influencebutton`}>
+                <button className={`${styles.menuButtonList_item} ${styles.add} influencebutton`}
+                    onClick={() => addNoteContentHandler(id, setEditflag)}
+                >
                     добавить
                 </button>    
-                <button className={`${styles.menuButtonList_item} ${styles.delete} influencebutton`}>
+                <button className={`${styles.menuButtonList_item} ${styles.delete} influencebutton`}
+                 onClick={() => deleteNoteContentHandler(id, setEditflag, deleteNote)}
+                >
                     удалить
                 </button>     
             </div>
 
-        </div>
+        </>
     );
 };
 
-export default MenuButton;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteNote: (id) => dispatch(deleteNote(id))
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        loaded: notesLoadedSelector(state),
+    };
+  };
+
+export default connect(mapStateToProps, mapDispatchToProps) (MenuButton);
 
 const initMenuButton = () => {
     const MenuButton = document.getElementById('MenuButton');
@@ -53,6 +81,16 @@ const initMenuButton = () => {
     })
 }
 
-const editNoteContent = (id ,setEditflag) => {
-    setEditflag(false) ;
+const editNoteContentHandler = (id ,setEditflag) => {
+    setEditflag(EDIT_NOTE) ;
+}
+
+const addNoteContentHandler = (id, setEditflag) => {
+    setEditflag(ADD_NOTE) ;
+}
+
+const deleteNoteContentHandler = (id, setEditflag, deleteNote) => {
+    setEditflag(SHOW_NOTE);
+    deleteNote(id);
+
 }

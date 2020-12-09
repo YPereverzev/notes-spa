@@ -18,6 +18,7 @@ const NotesTitle = ({ loaded, loading, loadNotes, notes, setActiveNote, activeNo
         if (!loaded) {
           loadNotes();
           initNotesTitle(setActiveNote);
+          setActiveNote('01');
         }
         setActiveNote('01');
       }, []); //eslint-disable-line
