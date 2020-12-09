@@ -11,7 +11,7 @@ import NoteTitleRow from './notetitlerow';
 
 const TrashedNotes = ({ trashedNotesSelector, loaded, loading, loadNotes, notes, setActiveNote, activeNote, setEditflag}) => {
     
-      if (trashedNotesSelector.length === 0) return <div>В огороде пусто, выросла капуста</div>;
+      if (trashedNotesSelector.length === 0) return <div></div>;
       
     return (
         trashedNotesSelector.map(note => {
@@ -20,7 +20,7 @@ const TrashedNotes = ({ trashedNotesSelector, loaded, loading, loadNotes, notes,
             activestyle = true
             }
             return (
-            <NoteTitleRow activestyle={activestyle} note={note} setEditflag={setEditflag} id={note.id}/>
+            <NoteTitleRow activestyle={activestyle} note={note} setEditflag={setEditflag} id={note.id} key={note.id}/>
             )
         })
     );
@@ -42,11 +42,9 @@ const mapStateToProps = (state, ownProps) => {
   export default connect(mapStateToProps)(TrashedNotes);
 
 
-function initNotesTitle (setActiveNote) {
-  const elNotesTitle = document.getElementById('NotesTitle');
-  elNotesTitle.addEventListener('click', (event) => { 
-    setActiveNote(event.target.closest('.NoteTitleRow').id);
-  })
-  
-
-  }
+// function initNotesTitle (setActiveNote) {
+//   const elNotesTitle = document.getElementById('NotesTitle');
+//   elNotesTitle.addEventListener('click', (event) => { 
+//     setActiveNote(event.target.closest('.NoteTitleRow').id);
+//   })
+//   }

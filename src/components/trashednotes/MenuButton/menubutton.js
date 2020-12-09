@@ -22,7 +22,7 @@ const MenuButton = ({ id, setEditflag, deleteNote, loaded }) => {
             <button id='MenuButton' 
             className={`${styles.menuButton} 
             `}> 
-                . . . 
+                ... 
             </button>
             <div 
             id='menuButtonList_wrapper'

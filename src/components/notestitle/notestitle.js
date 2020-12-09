@@ -32,7 +32,7 @@ const NotesTitle = ({ loaded, loading, loadNotes, notes, setActiveNote, activeNo
                 activestyle = true
               }
               return (
-                <NoteTitleRow activestyle={activestyle} note={note} setEditflag={setEditflag} id={note.id}/>
+                <NoteTitleRow activestyle={activestyle} note={note} setEditflag={setEditflag} id={note.id} key={note.id}/>
               )
             })
     );

@@ -1,18 +1,28 @@
 const allNotes = [
   {
     id: '01',
-    title: '11Как быстро обновлять MacOS',
-    text: 'Lorem1'
+    title: 'Как быстро обновлять MacOS',
+    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque nostrum voluptatem ratione labore quo eveniet explicabo sit voluptatum quidem.'
   },
   {
     id: '02',
-    title: '22Как быстро обновлять MacOS',
-    text: 'Lorem2'
+    title: 'Как медленно обновлять MacOS',
+    text: 'Lorem ipsum dolor sit amet.'
   },
   {
     id: '03',
-    title: '33Как быстро обновлять MacOS',
-    text: 'Lorem3'
+    title: 'Как не обновлять MacOS',
+    text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis velit dolorem fuga voluptatum sequi quas, veniam impedit non amet nostrum quam ut voluptatibus quidem ea dolor ratione. Alias, esse velit.'
+  },
+  {
+    id: '04',
+    title: 'Как обновить и все не заруинить',
+    text: 'Никак'
+  },
+  {
+    id: '05',
+    title: 'Untitled',
+    text: 'Lorem'
   },
 ];
 

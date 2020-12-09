@@ -7,6 +7,7 @@ import AddNotesContent from './components/notescontent/addnotescontent';
 
 import Trashed from './components/notestitle/notetitlerow/trashed';
 import TrashedNotes from './components/trashednotes';
+import Search from './components/search';
 
 import {
   SHOW_NOTE,
@@ -33,8 +34,8 @@ function App() {
             <Trashed />
           </div>
           <TrashedNotes />
+          <Search />
         </div>
-
       </div>
     </aside>
     <main className={globalStyles.main}>

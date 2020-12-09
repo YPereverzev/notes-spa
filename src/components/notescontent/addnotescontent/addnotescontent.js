@@ -72,6 +72,9 @@ const handleTextChange = (setTextValue) => {
 
 const handleSubmit = ({event, saveNewNote, activeNoteId, setEditflag}) => {
     event.preventDefault();
+        if (event.currentTarget[0].defaultValue.length === 0) {
+        event.currentTarget[0].defaultValue = 'Untitled';
+    }
     const newNoteInfo = {
         id: uuidv4(),
         title: event.currentTarget[0].defaultValue,

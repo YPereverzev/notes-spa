@@ -1,0 +1,16 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.search {
+    outline: none;
+    background-color: #444;
+    border: none;
+    border-radius: 6px;
+    height: 28px;
+    width: 250px;
+    color: #DDD;
+    text-align: center;
+}
