@@ -2,20 +2,14 @@ import React, { useState, useRef } from 'react';
 import styles from './addnotescontent.module.css';
 import { connect } from 'react-redux';
 import { saveNewNote } from '../../redux/actions'
-import { SHOW_NOTE,
-    SAVE_NEW_NOTE,
-} from '../../redux/constants';
+import { SHOW_NOTE } from '../../redux/constants';
 import { v4 as uuidv4 } from 'uuid';
 
 import {
-    tmpIdSelector,
     notesLoadedSelector,
     notesLoadingSelector,
 } from '../../redux/reducer/selectors';
 import Loader from '../../loader';
-
-
-
 
 const AddNotesContent = ({ activeNoteId, setEditflag, loading, loaded, saveNewNote }) => {
     const [titleValue, setTitleValue] = useState('');
@@ -83,9 +77,6 @@ const handleSubmit = ({event, saveNewNote, activeNoteId, setEditflag}) => {
         title: event.currentTarget[0].defaultValue,
         text: event.currentTarget[1].defaultValue,
     }
-    debugger;
-
     setEditflag(SHOW_NOTE);
     saveNewNote(newNoteInfo);
-    // setNewNote(activeNoteId, newNoteInfo);
 }

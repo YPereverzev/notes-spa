@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
 import NotesTitle from './components/notestitle';
 import NotesContent from './components/notescontent';
@@ -6,6 +6,7 @@ import NotesContentEdit from './components/notescontent/notescontentedit';
 import AddNotesContent from './components/notescontent/addnotescontent';
 
 import Trashed from './components/notestitle/notetitlerow/trashed';
+import TrashedNotes from './components/trashednotes';
 
 import {
   SHOW_NOTE,
@@ -31,23 +32,14 @@ function App() {
           <div>
             <Trashed />
           </div>
+          <TrashedNotes />
         </div>
 
       </div>
     </aside>
     <main className={globalStyles.main}>
-        {/* <div>
-          {editflag ? 
-            <NotesContent activeNoteId={activeNote} setEditflag={setEditflag}/> 
-            : <NotesContentEdit activeNoteId={activeNote} setEditflag={setEditflag}/>
-          }
-        </div> */}
-
         <div>
-          { 
-            <Choise editflag={editflag} activeNote={activeNote} setEditflag={setEditflag} setActiveNote={setActiveNote}/>
-          }
-          
+          {<Choise editflag={editflag} activeNote={activeNote} setEditflag={setEditflag} setActiveNote={setActiveNote}/>}
         </div>
     </main>
   </div>
@@ -65,7 +57,6 @@ const Choise = ({editflag,  activeNote, setEditflag, setActiveNote }) => {
     case ADD_NOTE:
       return <AddNotesContent setEditflag={setEditflag}/> 
     default:
-        debugger;
         return 'этого не должно было случиться' 
   }
 }

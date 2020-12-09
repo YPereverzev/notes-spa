@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
-    entrySelector,
-    idSelector,
     tmpIdSelector,
     notesLoadedSelector,
     notesLoadingSelector,
@@ -16,7 +14,6 @@ import styles from './notestitle.module.css';
 const NotesContent = ({ loaded, loading, activeNoteId, entry, loadFirstNoteSelector, setActiveNote, tmpIdSelector }) => {
     if (loading || !loaded) return <Loader />;
     
-    debugger;
     if (!tmpIdSelector) {
         setActiveNote(loadFirstNoteSelector);
         return (

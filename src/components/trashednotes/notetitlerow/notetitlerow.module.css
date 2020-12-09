@@ -1,0 +1,26 @@
+.notes_names {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+.notes_names:hover {
+    background-color: #333;
+    position: relative;
+}
+
+
+.menuButton_wrapper {
+    position: relative;
+}
+
+.active {
+    background-color: #f7d66d;
+    color: #333;
+  }
+  
+  .active:hover {
+    background-color: #fad24e;
+    color: #333;
+  }
+  

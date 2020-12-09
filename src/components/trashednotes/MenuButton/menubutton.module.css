@@ -1,0 +1,63 @@
+.menuButton {
+    position: absolute;
+    right: -37px;
+    top: 12px;
+    height: 35px;
+    font-size: large;
+    width: 20px;
+    border: none;
+    opacity: 0.7;
+    color: #FFF;
+    font-weight: bold;
+    line-height: 0.3em;
+    outline: none;
+    border-radius: 4px;
+    background-color: rgb(226, 194, 13);
+}
+
+.menuButton:hover {
+    opacity: 1;
+}
+
+.displayNone {
+    display: none;
+}
+
+.menuButtonList_wrapper {
+    color: black;
+    position: absolute;
+    top: 12px;
+    right: -35px;
+    height: 25px;
+    /* border: 2px solid red; */
+    opacity: 1;
+    /* background-color: #EEE; */
+    height: 200px;
+}
+
+.menuButtonList_item {
+    border: none;
+    background-color: #DDD;
+    width: 130px;
+    height: 30px;
+    outline: none;
+}
+
+.menuButtonList_item:hover {
+    background-color: #666;
+}
+
+.menuButtonList_item:focus {
+    background-color: #999;
+}
+
+.edit {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.delete {
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+
+}
