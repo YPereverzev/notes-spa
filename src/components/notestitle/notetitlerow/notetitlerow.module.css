@@ -1,22 +1,22 @@
 .notes_names {
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding: 22px;
+    position: relative;
+    
 }
 
 .notes_names:hover {
     background-color: #333;
-    position: relative;
-}
-
-
-.menuButton_wrapper {
-    position: relative;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
 }
 
 .active {
     background-color: #f7d66d;
     color: #333;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
   }
   
   .active:hover {

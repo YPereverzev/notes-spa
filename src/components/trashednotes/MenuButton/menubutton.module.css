@@ -1,7 +1,7 @@
 .menuButton {
     position: absolute;
     right: -37px;
-    top: 12px;
+    top: 11x;
     height: 35px;
     font-size: large;
     width: 20px;
@@ -26,7 +26,7 @@
 .menuButtonList_wrapper {
     color: black;
     position: absolute;
-    top: 12px;
+    top: 2px;
     right: -35px;
     height: 25px;
     /* border: 2px solid red; */

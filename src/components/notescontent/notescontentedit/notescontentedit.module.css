@@ -10,12 +10,12 @@
     outline: none;
     border: none;
     background-color: rgb(247, 247, 247);
-    width: 100%;
-    display: block;
+    width: calc(100% - 40px);
     padding: 0;
     padding: 20px;
     border-radius: 5px;
 }
+
 
 
 .newTextValue {
@@ -37,7 +37,8 @@
     margin: 0 auto;
     margin-right: 0px;
     position: absolute;
-    right: 0px;
+    right: 0;
+    top: 40px;
 }
 
 .applyBtn:hover {

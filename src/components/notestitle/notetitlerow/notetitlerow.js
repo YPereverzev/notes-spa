@@ -11,13 +11,12 @@ const NoteTitleRow = ({ note, activestyle, setEditflag}) => {
             key={note.id}
             id={note.id}
         >
-          <p>{note.title}</p>
+          <span>{note.title}</span>
           <div className={styles.menuButton_wrapper}>
             {activestyle && <MenuButton id={note.id} setEditflag={setEditflag}/>}
           </div>
       </div>
     );
-
 
 };
 

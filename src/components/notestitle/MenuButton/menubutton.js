@@ -18,7 +18,7 @@ const MenuButton = ({ id, setEditflag, deleteNote, loaded }) => {
         initMenuButton();
     }, []); //eslint-disable-line
     return (
-        <>
+        <div className={styles.outer_wrapper_MenuButton}>
             <button id='MenuButton' 
             className={`${styles.menuButton} 
             `}> 
@@ -46,7 +46,7 @@ const MenuButton = ({ id, setEditflag, deleteNote, loaded }) => {
                 </button>     
             </div>
 
-        </>
+        </div>
     );
 };
 

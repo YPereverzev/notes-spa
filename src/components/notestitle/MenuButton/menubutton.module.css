@@ -1,7 +1,11 @@
+.notes_names {
+    position: relative;
+}
+
 .menuButton {
     position: absolute;
-    right: -37px;
-    top: 12px;
+    right: 20px;
+    top: 16px;
     height: 35px;
     font-size: large;
     width: 20px;
@@ -13,6 +17,9 @@
     outline: none;
     border-radius: 4px;
     background-color: rgb(226, 194, 13);
+    line-height: 5px;
+    padding-left: 7px;
+    padding-bottom: 10px;
 }
 
 .menuButton:hover {
@@ -24,15 +31,14 @@
 }
 
 .menuButtonList_wrapper {
+    z-index: 999;
     color: black;
     position: absolute;
-    top: 12px;
-    right: -35px;
-    height: 35px;
-    /* border: 2px solid red; */
+    top: 15px;
+    right:  -60px;
+    height: 40px;
     opacity: 1;
-    /* background-color: #EEE; */
-    height: 200px;
+    width: 100px;
 }
 
 .menuButtonList_item {
