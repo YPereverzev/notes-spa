@@ -3,28 +3,31 @@ import { connect } from 'react-redux';
 import {
     trashedNotesSelector,
 } from '../redux/reducer/selectors';
+
+import styles from './trashednotes.module.css'
   
-import NoteTitleRow from './notetitlerow';
+import NoteTitleRow from '../notestitle/notetitlerow';
+import userEvent from '@testing-library/user-event';
+import { useEffect } from 'react';
 
+const TrashedNotes = ({ trashedNotesSelector, activeNote, setActiveNote, setEditflag}) => {
+  useEffect(() => {
+      initNotesTitle(setActiveNote);
+    }, []); //eslint-disable-line
 
-
-
-const TrashedNotes = ({ trashedNotesSelector, loaded, loading, loadNotes, notes, setActiveNote, activeNote, setEditflag}) => {
+  if (trashedNotesSelector.length === 0) return <div></div>;
     
-      if (trashedNotesSelector.length === 0) return <div></div>;
-      
-    return (
-        trashedNotesSelector.map(note => {
-            let activestyle = false;
-            if (activeNote === note.id ) {
+  return (
+      trashedNotesSelector.map(note => {
+          let activestyle = false;
+          if (activeNote === note.id ) {
             activestyle = true
-            }
-            return (
+          }
+          return (
             <NoteTitleRow activestyle={activestyle} note={note} setEditflag={setEditflag} id={note.id} key={note.id}/>
-            )
-        })
-    );
-
+          )
+      })
+  );
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -33,18 +36,14 @@ const mapStateToProps = (state, ownProps) => {
     };
   };
   
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//       loadNotes: () => dispatch(loadNotes()),
-//     };
-//   };
-  
-  export default connect(mapStateToProps)(TrashedNotes);
+export default connect(mapStateToProps)(TrashedNotes);
 
 
-// function initNotesTitle (setActiveNote) {
-//   const elNotesTitle = document.getElementById('NotesTitle');
-//   elNotesTitle.addEventListener('click', (event) => { 
-//     setActiveNote(event.target.closest('.NoteTitleRow').id);
-//   })
-//   }
+function initNotesTitle (setActiveNote) {
+  const elNotesTitle = document.getElementById('trashedNotesTitle');
+  elNotesTitle.addEventListener('click', (event) => { 
+    debugger;
+    const buff = event.target.closest('.NoteTitleRow').id;
+    setActiveNote(buff);
+  })
+}

@@ -26,17 +26,16 @@ const NotesTitle = ({ loaded, loading, loadNotes, notes, setActiveNote, activeNo
       if (loading || !loaded) return <Loader />;
       
     return (
-            notes.map(note => {
-              let activestyle = false;
-              if (activeNote === note.id ) {
-                activestyle = true
-              }
-              return (
-                <NoteTitleRow activestyle={activestyle} note={note} setEditflag={setEditflag} id={note.id} key={note.id}/>
-              )
-            })
+      notes.map(note => {
+        let activestyle = false;
+        if (activeNote === note.id ) {
+          activestyle = true
+        }
+        return (
+          <NoteTitleRow activestyle={activestyle} note={note} setEditflag={setEditflag} id={note.id} key={note.id}/>
+        )
+      })
     );
-
 }
 
 const mapStateToProps = (state, ownProps) => {
@@ -57,10 +56,8 @@ const mapDispatchToProps = (dispatch) => {
 
 
 function initNotesTitle (setActiveNote) {
-  const elNotesTitle = document.getElementById('NotesTitle');
+  const elNotesTitle = document.getElementById('notesTitle');
   elNotesTitle.addEventListener('click', (event) => { 
     setActiveNote(event.target.closest('.NoteTitleRow').id);
   })
-  
-
-  }
+}

@@ -17,7 +17,6 @@ import {
 import globalStyles from '../src/style/globalstyles.module.css';
 
 
-
 function App() {
   const [ activeNote, setActiveNote] = useState('01');
   const [ editflag, setEditflag] = useState(SHOW_NOTE);
@@ -27,20 +26,20 @@ function App() {
     <aside>
       <div className={globalStyles.add_wrapper}>
         <div className={globalStyles.notes_name_wrapper}>
-          <div id="NotesTitle">
+          <div id="notesTitle">
             <NotesTitle setActiveNote={setActiveNote} activeNote={activeNote} setEditflag={setEditflag}/>
           </div>
-          <div>
-            <Trashed />
+          <Trashed />
+          <div id="trashedNotesTitle">
+            <TrashedNotes setActiveNote={setActiveNote} activeNote={activeNote} setEditflag={setEditflag}/>
           </div>
-          <TrashedNotes />
           <Search />
         </div>
       </div>
     </aside>
     <main className={globalStyles.main}>
         <div>
-          {<Choise editflag={editflag} activeNote={activeNote} setEditflag={setEditflag} setActiveNote={setActiveNote}/>}
+          {<NotesInnerContent editflag={editflag} activeNote={activeNote} setEditflag={setEditflag} setActiveNote={setActiveNote}/>}
         </div>
     </main>
   </div>
@@ -49,7 +48,7 @@ function App() {
 
 export default App;
 
-const Choise = ({editflag,  activeNote, setEditflag, setActiveNote }) => {
+const NotesInnerContent = ({editflag,  activeNote, setEditflag, setActiveNote }) => {
   switch (editflag) {
     case SHOW_NOTE:
       return <NotesContent activeNoteId={activeNote} setEditflag={setEditflag} setActiveNote={setActiveNote}/> 

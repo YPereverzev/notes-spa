@@ -11,7 +11,7 @@ const NoteTitleRow = ({ note, activestyle, setEditflag}) => {
             key={note.id}
             id={note.id}
         >
-          <span>{note.title}</span>
+          <span className={styles.note_title_content}>{fitToString(note.title)}</span>
           <div className={styles.menuButton_wrapper}>
             {activestyle && <MenuButton id={note.id} setEditflag={setEditflag}/>}
           </div>
@@ -21,3 +21,8 @@ const NoteTitleRow = ({ note, activestyle, setEditflag}) => {
 };
 
 export default NoteTitleRow;
+
+function fitToString(title) {
+  return (title.length < 32) ? title : title.substr(0, 30) + ' ...';
+
+}
