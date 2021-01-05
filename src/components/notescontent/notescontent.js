@@ -13,9 +13,9 @@ import styles from './notestitle.module.css';
 
 const NotesContent = ({ loaded, loading, activeNoteId, entry, loadFirstNoteSelector, setActiveNote, tmpIdSelector }) => {
     if (loading || !loaded) return <Loader />;
+    // setActiveNote(loadFirstNoteSelector);
     
     if (!tmpIdSelector) {
-        setActiveNote(loadFirstNoteSelector);
         return (
             <div className={styles.note_area}>
                 <div className={styles.notes_title}>
@@ -23,14 +23,6 @@ const NotesContent = ({ loaded, loading, activeNoteId, entry, loadFirstNoteSelec
                 </div>
             </div>
     )}
-
-    // if (!activeNoteId) {
-    //     return (
-    //         <div>
-    //             нет записей
-    //         </div>
-    //     )
-    // }
 
     return (
         <div className={styles.note_area}>

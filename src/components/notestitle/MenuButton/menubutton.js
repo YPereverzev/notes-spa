@@ -9,11 +9,12 @@ import {
 import { deleteNote } from '../../redux/actions';
 import {
     notesLoadedSelector,
+    loadFirstNoteSelector,
 } from '../../redux/reducer/selectors';
 
 
 
-const MenuButton = ({ id, setEditflag, deleteNote, loaded }) => {
+const MenuButton = ({ id, setEditflag, deleteNote, loaded, setActiveNote, loadFirstNoteSelector }) => {
     useEffect(() => {
         initMenuButton();
     }, []); //eslint-disable-line
@@ -40,7 +41,7 @@ const MenuButton = ({ id, setEditflag, deleteNote, loaded }) => {
                     добавить
                 </button>    
                 <button className={`${styles.menuButtonList_item} ${styles.delete} influencebutton`}
-                 onClick={() => deleteNoteContentHandler(id, setEditflag, deleteNote)}
+                 onClick={() => deleteNoteContentHandler(id, setEditflag, deleteNote, loadFirstNoteSelector, setActiveNote)}
                 >
                     удалить
                 </button>     
@@ -58,6 +59,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
+        loadFirstNoteSelector: loadFirstNoteSelector(state),
         loaded: notesLoadedSelector(state),
     };
   };
@@ -89,7 +91,8 @@ const addNoteContentHandler = (id, setEditflag) => {
     setEditflag(ADD_NOTE) ;
 }
 
-const deleteNoteContentHandler = (id, setEditflag, deleteNote) => {
+const deleteNoteContentHandler = (id, setEditflag, deleteNote, loadFirstNoteSelector, setActiveNote) => {
+    setActiveNote(loadFirstNoteSelector);
     setEditflag(SHOW_NOTE);
     deleteNote(id);
 

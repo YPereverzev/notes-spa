@@ -4,6 +4,7 @@ import {
     notesSelector,
     notesLoadedSelector,
     notesLoadingSelector,
+    loadFirstNoteSelector,
 } from '../redux/reducer/selectors';
 import { loadNotes } from '../redux/actions';
   
@@ -13,17 +14,18 @@ import NoteTitleRow from './notetitlerow';
 
 
 
-const NotesTitle = ({ loaded, loading, loadNotes, notes, setActiveNote, activeNote, setEditflag}) => {
+const NotesTitle = ({ loaded, loading, loadNotes, notes, setActiveNote, activeNote, setEditflag, loadFirstNoteSelector}) => {
     useEffect(() => {
         if (!loaded) {
           loadNotes();
           initNotesTitle(setActiveNote);
-          setActiveNote('01');
+          setActiveNote(loadFirstNoteSelector);
         }
-        setActiveNote('01');
+        //what for next line...?
       }, []); //eslint-disable-line
     
-      if (loading || !loaded) return <Loader />;
+    if (loading || !loaded) return <Loader />;
+    if (!activeNote) setActiveNote(loadFirstNoteSelector)
       
     return (
       notes.map(note => {
@@ -32,7 +34,7 @@ const NotesTitle = ({ loaded, loading, loadNotes, notes, setActiveNote, activeNo
           activestyle = true
         }
         return (
-          <NoteTitleRow activestyle={activestyle} note={note} setEditflag={setEditflag} id={note.id} key={note.id}/>
+          <NoteTitleRow activestyle={activestyle} note={note} setEditflag={setEditflag} id={note.id} key={note.id} setActiveNote={setActiveNote}/>
         )
       })
     );
@@ -43,6 +45,7 @@ const mapStateToProps = (state, ownProps) => {
         notes: notesSelector(state, ownProps),
         loaded: notesLoadedSelector(state),
         loading: notesLoadingSelector (state),
+        loadFirstNoteSelector: loadFirstNoteSelector(state),
     };
   };
   
@@ -52,7 +55,7 @@ const mapDispatchToProps = (dispatch) => {
     };
   };
   
-  export default connect(mapStateToProps, mapDispatchToProps)(NotesTitle);
+export default connect(mapStateToProps, mapDispatchToProps)(NotesTitle);
 
 
 function initNotesTitle (setActiveNote) {

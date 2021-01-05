@@ -7,22 +7,23 @@ import {
 import styles from './trashednotes.module.css'
   
 import NoteTitleRow from '../notestitle/notetitlerow';
-import userEvent from '@testing-library/user-event';
 import { useEffect } from 'react';
 
-const TrashedNotes = ({ trashedNotesSelector, activeNote, setActiveNote, setEditflag}) => {
+const TrashedNotes = ({ trashedNotes, activeNote, setActiveNote, setEditflag}) => {
   useEffect(() => {
       initNotesTitle(setActiveNote);
     }, []); //eslint-disable-line
 
-  if (trashedNotesSelector.length === 0) return <div></div>;
+  if (trashedNotes.length === 0) return <div></div>;
     
   return (
-      trashedNotesSelector.map(note => {
+      trashedNotes.map(note => {
+          debugger;
           let activestyle = false;
           if (activeNote === note.id ) {
             activestyle = true
           }
+
           return (
             <NoteTitleRow activestyle={activestyle} note={note} setEditflag={setEditflag} id={note.id} key={note.id}/>
           )
@@ -32,7 +33,7 @@ const TrashedNotes = ({ trashedNotesSelector, activeNote, setActiveNote, setEdit
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        trashedNotesSelector: trashedNotesSelector (state),
+        trashedNotes: trashedNotesSelector (state),
     };
   };
   

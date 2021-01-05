@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
     case LOAD_NOTES + FAILURE:
       return {
         ...state,
-        loading: false,
+        loading: false, 
         loaded: false,
         error: error,
       };

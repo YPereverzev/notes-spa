@@ -3,7 +3,7 @@ import globalStyles from '../../../style/globalstyles.module.css';
 import styles from './notetitlerow.module.css';
 import MenuButton from '../MenuButton'
 
-const NoteTitleRow = ({ note, activestyle, setEditflag}) => {
+const NoteTitleRow = ({ note, activestyle, setEditflag, setActiveNote}) => {
     
     return (
         <div 
@@ -13,7 +13,7 @@ const NoteTitleRow = ({ note, activestyle, setEditflag}) => {
         >
           <span className={styles.note_title_content}>{fitToString(note.title)}</span>
           <div className={styles.menuButton_wrapper}>
-            {activestyle && <MenuButton id={note.id} setEditflag={setEditflag}/>}
+            {activestyle && <MenuButton id={note.id} setEditflag={setEditflag} setActiveNote={setActiveNote}/>}
           </div>
       </div>
     );
