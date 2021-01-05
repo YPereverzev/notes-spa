@@ -18,14 +18,13 @@ const TrashedNotes = ({ trashedNotes, activeNote, setActiveNote, setEditflag}) =
     
   return (
       trashedNotes.map(note => {
-          debugger;
           let activestyle = false;
           if (activeNote === note.id ) {
             activestyle = true
           }
 
           return (
-            <NoteTitleRow activestyle={activestyle} note={note} setEditflag={setEditflag} id={note.id} key={note.id}/>
+            <NoteTitleRow activestyle={activestyle} note={note} setEditflag={setEditflag} id={note.id} key={note.id} isTrashedMenuButton={true} setActiveNote={setActiveNote}/>
           )
       })
   );
@@ -43,7 +42,6 @@ export default connect(mapStateToProps)(TrashedNotes);
 function initNotesTitle (setActiveNote) {
   const elNotesTitle = document.getElementById('trashedNotesTitle');
   elNotesTitle.addEventListener('click', (event) => { 
-    debugger;
     const buff = event.target.closest('.NoteTitleRow').id;
     setActiveNote(buff);
   })

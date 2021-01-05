@@ -13,7 +13,7 @@ export const trashedNotesSelector = (state) => state.notes.trashed || null
 export const allNotesSelector = (state) => state?.notes?.entities || null
 
 export const tmpIdSelector = (state, activeNoteId) => {
-  return state.notes.entities?.find(item => item.id === activeNoteId);
+  return state.notes.entities?.find(item => item.id === activeNoteId) || state.notes.trashed?.find(item => item.id === activeNoteId);
 };
 
 export const trashedEntrytmpIdSelector = (state, activeNoteId) => {

@@ -7,6 +7,8 @@ import {
   SET_NEW_NOTE,
   SAVE_NEW_NOTE,
   DELETE_NOTE,
+  FINAL_DELETE_NOTE,
+  RESTORE_NOTE,
 } from '../constants';
 
 const initialState = {
@@ -78,6 +80,34 @@ export default (state = initialState, action) => {
           entities: [...newState],
           trashed: [...state.trashed, ...deltedNote]
         };
+      }
+
+      case RESTORE_NOTE: {
+        debugger;
+        const activeNoteIdIndex = state.trashed.findIndex(item => item.id === payload.id);
+        const newState = [...state.trashed];
+        const restoredNote = newState.splice(activeNoteIdIndex, 1);
+        return {
+          ...state,
+          loading: false,
+          loaded: true,
+          error: null,
+          entities: [...state.entities, ...restoredNote],
+          trashed: [...newState],
+        };
+
+      }
+      
+      case FINAL_DELETE_NOTE: {
+        debugger;
+        const activeNoteIdIndex = state.trashed.findIndex(item => item.id === payload.id);
+        const newState = [...state.trashed];
+        newState.splice(activeNoteIdIndex, 1);
+        return {
+          ...state,
+          trashed: [...newState],
+        };
+
       }
 
     default:

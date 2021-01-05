@@ -21,9 +21,14 @@ const AddNotesContent = ({ activeNoteId, setEditflag, loading, loaded, saveNewNo
     return (
         <div className={styles.note_area}>
 
-            <form ref={formEl} onSubmit={(event) => {
-                handleSubmit({event, saveNewNote, activeNoteId, setEditflag})
-            }} id='form'>
+            <form 
+                ref={formEl} 
+                onSubmit={(event) => {
+                    handleSubmit({event, saveNewNote, activeNoteId, setEditflag})
+                }} 
+                id='form'
+                onChange={() => {}} 
+            >
                 <label>
                     <p>
                         Название новой заметки:
@@ -38,7 +43,7 @@ const AddNotesContent = ({ activeNoteId, setEditflag, loading, loaded, saveNewNo
                 </label>
                 <br></br>
                 <div className={styles.applyBtn_wrapper}>
-                    <input className={styles.applyBtn} type="submit" value="Сохранить" />
+                    <input className={styles.applyBtn} type="submit" value="Сохранить" onChange={() => {}} />
                 </div>
             </form>
         </div>
