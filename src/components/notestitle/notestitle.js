@@ -21,11 +21,10 @@ const NotesTitle = ({ loaded, loading, loadNotes, notes, setActiveNote, activeNo
           initNotesTitle(setActiveNote);
           setActiveNote(loadFirstNoteSelector);
         }
-        //what for next line...?
       }, []); //eslint-disable-line
     
     if (loading || !loaded) return <Loader />;
-    if (!activeNote) setActiveNote(loadFirstNoteSelector)
+    if (!activeNote) setActiveNote(() => loadFirstNoteSelector)
       
     return (
       notes.map(note => {
@@ -34,6 +33,7 @@ const NotesTitle = ({ loaded, loading, loadNotes, notes, setActiveNote, activeNo
           activestyle = true
         }
         return (
+          !note.notOk &&
           <NoteTitleRow activestyle={activestyle} note={note} setEditflag={setEditflag} id={note.id} key={note.id} setActiveNote={setActiveNote}/>
         )
       })

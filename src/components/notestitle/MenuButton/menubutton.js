@@ -70,8 +70,8 @@ const initMenuButton = () => {
     const MenuButton = document.getElementById('MenuButton');
     const menuButtonList_wrapper = document.getElementById('menuButtonList_wrapper');
     MenuButton.addEventListener('click', (event) => {
-        MenuButton.classList.toggle('displayNone');
-        menuButtonList_wrapper.classList.toggle('displayNone');
+            MenuButton.classList.toggle('displayNone');
+            menuButtonList_wrapper.classList.toggle('displayNone');
     })
 
     const ROOT = document.getElementById('root');

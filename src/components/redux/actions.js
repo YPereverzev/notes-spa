@@ -8,7 +8,8 @@ import {
     SAVE_NEW_NOTE,
     DELETE_NOTE,
     FINAL_DELETE_NOTE,
-    RESTORE_NOTE
+    RESTORE_NOTE,
+    SEARCH_TEXT_FILTER,
  } from '../redux/constants';
 
 export const loadNotes = (state) => async (dispatch) => {
@@ -53,7 +54,6 @@ export const deleteNote = (id) => {
 }
 
 export const restoreNote = (WTF) => {
-  debugger;
   return {
     type: RESTORE_NOTE,
     payload: {
@@ -66,3 +66,12 @@ export const finalDeleteNote = id => ({
   type: FINAL_DELETE_NOTE,
   payload: {id}
 })
+
+export const searchFilter = (searchText) => {
+  return {
+    type: SEARCH_TEXT_FILTER,
+    payload: {
+      searchText: searchText
+    }
+  }
+}

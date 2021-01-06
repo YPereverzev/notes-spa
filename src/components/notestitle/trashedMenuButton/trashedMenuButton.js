@@ -50,9 +50,7 @@ const TrashedMenuButton = ({ id, setEditflag, finalDeleteNote, restoreNote, setA
 };
 
 const mapDispatchToProps = (dispatch) => {
-    debugger;
     return {
-        // deleteNote: (id) => dispatch(deleteNote(id)),
         restoreNote: (WTF) => dispatch(restoreNote(WTF)),
         finalDeleteNote: (WTF) => dispatch(finalDeleteNote(WTF)),
     }
@@ -85,21 +83,14 @@ const initMenuButton = () => {
 }
 
 const restoreContentHandler = ({ id ,setEditflag, restoreNote, loadFirstNoteSelector, setActiveNote }) => {
-    debugger;
     const WTF = id;
     restoreNote(WTF);
     setActiveNote(loadFirstNoteSelector);
-    debugger;
-
     setEditflag(SHOW_NOTE);
-    // 
-    debugger;
 }
 
 const finalDeleteNoteContentHandler = ({ id, setEditflag, deleteNote, loadFirstNoteSelector, setActiveNote, finalDeleteNote }) => {
-    debugger;
     setActiveNote(loadFirstNoteSelector);
     setEditflag(SHOW_NOTE);
     finalDeleteNote(id);
-
 }

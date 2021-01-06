@@ -22,9 +22,8 @@ const TrashedNotes = ({ trashedNotes, activeNote, setActiveNote, setEditflag}) =
           if (activeNote === note.id ) {
             activestyle = true
           }
-
           return (
-            <NoteTitleRow activestyle={activestyle} note={note} setEditflag={setEditflag} id={note.id} key={note.id} isTrashedMenuButton={true} setActiveNote={setActiveNote}/>
+            !note.notOk && <NoteTitleRow activestyle={activestyle} note={note} setEditflag={setEditflag} id={note.id} key={note.id} isTrashedMenuButton={true} setActiveNote={setActiveNote}/>
           )
       })
   );

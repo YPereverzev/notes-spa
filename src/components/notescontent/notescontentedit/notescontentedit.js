@@ -26,7 +26,7 @@ const NotesContentEdit = ({ activeNoteId, setEditflag, entry, setNewNote }) => {
                 onSubmit={(event) => handleSubmit(event, setNewNote, activeNoteId, setEditflag)} 
                 id='form'
                 onChange={() => {}} 
-            >
+                >
                 <label>
                     <p>
                         Название заметки:
