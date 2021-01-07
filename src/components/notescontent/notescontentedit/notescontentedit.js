@@ -5,8 +5,6 @@ import { setNewNote } from '../../redux/actions'
 import { SHOW_NOTE } from '../../redux/constants'
 
 import {
-    entrySelector,
-    idSelector,
     tmpIdSelector,
     notesLoadedSelector,
     notesLoadingSelector,
@@ -23,7 +21,12 @@ const NotesContentEdit = ({ activeNoteId, setEditflag, entry, setNewNote }) => {
     return (
         <div className={styles.note_area}>
 
-            <form ref={formEl} onSubmit={(event) => handleSubmit(event, setNewNote, activeNoteId, setEditflag)} id='form'>
+            <form 
+                ref={formEl} 
+                onSubmit={(event) => handleSubmit(event, setNewNote, activeNoteId, setEditflag)} 
+                id='form'
+                onChange={() => {}} 
+                >
                 <label>
                     <p>
                         Название заметки:

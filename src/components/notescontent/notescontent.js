@@ -15,7 +15,6 @@ const NotesContent = ({ loaded, loading, activeNoteId, entry, loadFirstNoteSelec
     if (loading || !loaded) return <Loader />;
     
     if (!tmpIdSelector) {
-        setActiveNote(loadFirstNoteSelector);
         return (
             <div className={styles.note_area}>
                 <div className={styles.notes_title}>
@@ -23,14 +22,6 @@ const NotesContent = ({ loaded, loading, activeNoteId, entry, loadFirstNoteSelec
                 </div>
             </div>
     )}
-
-    // if (!activeNoteId) {
-    //     return (
-    //         <div>
-    //             нет записей
-    //         </div>
-    //     )
-    // }
 
     return (
         <div className={styles.note_area}>

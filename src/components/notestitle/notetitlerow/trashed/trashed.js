@@ -3,15 +3,11 @@ import styles from './trashed.module.css';
 import { connect } from 'react-redux';
 
 import {
-    entrySelector,
     trashedNotesSelector,
     tmpIdSelector,
     notesLoadedSelector,
     notesLoadingSelector,
 } from '../../../redux/reducer/selectors';
-
-
-
 
 const Trashed = ({trashedNotesSelector}) => {
     const trashedQty = 2;
@@ -19,7 +15,7 @@ const Trashed = ({trashedNotesSelector}) => {
         <div className={styles.outer_wrapper}>
             <div className={styles.wrapper}>
                 {trashedNotesSelector.length} trashed note
-                {trashedNotesSelector.length > 0 ? 's' : ''}
+                {trashedNotesSelector.length > 1 ? 's' : ''}
             </div>
         </div>
     );
@@ -31,7 +27,6 @@ const mapStateToProps = (state, ownProps) => {
         loaded: notesLoadedSelector(state),
         loading: notesLoadingSelector (state),
         trashedNotesSelector: trashedNotesSelector(state),
-
     };
   };
 

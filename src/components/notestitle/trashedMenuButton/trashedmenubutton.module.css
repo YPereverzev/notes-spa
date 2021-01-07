@@ -1,7 +1,11 @@
+.notes_names {
+    position: relative;
+}
+
 .menuButton {
     position: absolute;
-    right: -37px;
-    top: 11x;
+    right: 20px;
+    top: 16px;
     height: 35px;
     font-size: large;
     width: 20px;
@@ -13,6 +17,9 @@
     outline: none;
     border-radius: 4px;
     background-color: rgb(226, 194, 13);
+    line-height: 5px;
+    padding-left: 7px;
+    padding-bottom: 10px;
 }
 
 .menuButton:hover {
@@ -23,24 +30,27 @@
     display: none;
 }
 
-.menuButtonList_wrapper {
+.outer_wrapper_trashMenuButton {
+    z-index: 999;
     color: black;
     position: absolute;
-    top: 2px;
-    right: -35px;
-    height: 25px;
-    /* border: 2px solid red; */
+    top: 0px;
+    right:  0px;
+    /* height: 40px; */
     opacity: 1;
-    /* background-color: #EEE; */
-    height: 200px;
+    /* width: 100px; */
+    display: flex;
+    flex-direction: row;
+    /* content: ""; */
 }
 
 .menuButtonList_item {
     border: none;
     background-color: #DDD;
     width: 130px;
-    height: 30px;
+    height: 35px;
     outline: none;
+    display: block;
 }
 
 .menuButtonList_item:hover {
@@ -51,13 +61,19 @@
     background-color: #999;
 }
 
-.edit {
+.restore {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    height: 35px;
 }
 
-.delete {
+.final_delete {
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
+}
 
+.trashedMenuButtonList_wrapper {
+    position: absolute;
+    top: 15px;
+    right: -90px;
 }

@@ -7,6 +7,9 @@ import {
     SET_NEW_NOTE,
     SAVE_NEW_NOTE,
     DELETE_NOTE,
+    FINAL_DELETE_NOTE,
+    RESTORE_NOTE,
+    SEARCH_TEXT_FILTER,
  } from '../redux/constants';
 
 export const loadNotes = (state) => async (dispatch) => {
@@ -14,7 +17,6 @@ export const loadNotes = (state) => async (dispatch) => {
 
   try {
     const notesResponse = await fetch(notesAPI).then(item => item.json());
-
 
     dispatch({type: LOAD_NOTES + SUCCESS, notesResponse });
   } catch (error) {
@@ -51,4 +53,25 @@ export const deleteNote = (id) => {
   }
 }
 
+export const restoreNote = (WTF) => {
+  return {
+    type: RESTORE_NOTE,
+    payload: {
+      id: WTF
+    }
+  }
+}
 
+export const finalDeleteNote = id => ({
+  type: FINAL_DELETE_NOTE,
+  payload: {id}
+})
+
+export const searchFilter = (searchText) => {
+  return {
+    type: SEARCH_TEXT_FILTER,
+    payload: {
+      searchText: searchText
+    }
+  }
+}

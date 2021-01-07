@@ -13,4 +13,8 @@ export const SHOW_NOTE ='SHOW_NOTE';
 export const EDIT_NOTE ='EDIT_NOTE';
 export const ADD_NOTE ='ADD_NOTE';
 export const DELETE_NOTE ='DELETE_NOTE';
+export const FINAL_DELETE_NOTE ='FINAL_DELETE_NOTE';
 
+export const RESTORE_NOTE ='RESTORE_NOTE';
+
+export const SEARCH_TEXT_FILTER = 'SEARCH_TEXT_FILTER';

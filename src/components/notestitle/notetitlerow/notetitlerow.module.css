@@ -3,7 +3,7 @@
     justify-content: center;
     padding: 22px;
     position: relative;
-    
+    text-overflow: clip;
 }
 
 .notes_names:hover {
@@ -24,3 +24,6 @@
     color: #333;
   }
   
+  .note_title_content {
+    padding-right: 20px;
+  }
